@@ -2,13 +2,19 @@ def get_absolute_url(url, *args, **kwargs):
 
     
     s = url + '/' + args[0]
-    if len(args) > 1:
-        i = 1   
+    if len(args) > 1:        
         for i in range(1, len(args)):
             s += '/' + args[i]
-    s += '?'    
+    s += '?' 
+    j = 1
+
     for k, v in kwargs.items():
-        s += '&' + k + '=' + v 
+        if j < len(kwargs):
+            j += 1                        
+            s += k + '=' + v + '&'
+        else:
+            s += k + '=' + v 
+                      
     print(s)
 
 get_absolute_url('www.yandex.ru', 'posts', 'news', id='24', author='admin')
