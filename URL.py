@@ -4,16 +4,16 @@ def get_absolute_url(url, *args, **kwargs):
     s = url + '/' + args[0]
     if len(args) > 1:        
         for i in range(1, len(args)):
-            s += '/' + args[i]
+            s += f"/{args[i]}"
     s += '?' 
+    
     j = 1
-
     for k, v in kwargs.items():
         if j < len(kwargs):
             j += 1                        
-            s += k + '=' + v + '&'
+            s += f"{k}={v}&"
         else:
-            s += k + '=' + v 
+            s += f"{k}={v}"
                       
     print(s)
 
